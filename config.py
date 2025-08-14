@@ -8,13 +8,13 @@ LEARNING_RATE = 1e-5
 LAMBDA_IDENTITY = 0.0
 LAMBDA_CYCLE = 10
 NUM_WORKERS = 16
-NUM_EPOCHS = 400
+NUM_EPOCHS = 200
 LOAD_MODEL = False
 SAVE_MODEL = True
-CHECKPOINT_GEN_H = "saved_models/gens/genh_v3s.pth.tar"
-CHECKPOINT_GEN_Z = "saved_models/gens/genz_v3s.pth.tar"
-CHECKPOINT_CRITIC_H = "saved_models/discrs/disch_v3s.pth.tar"
-CHECKPOINT_CRITIC_Z = "saved_models/discrs/discz_v3s.pth.tar"
+CHECKPOINT_GEN_REAL = "saved_models/gens/gen_real_200.pth.tar"
+CHECKPOINT_GEN_SYNTH = "saved_models/gens/gen_synth_200.pth.tar"
+CHECKPOINT_DISC_REAL = "saved_models/discs/disc_real_200.pth.tar"
+CHECKPOINT_DISC_SYNTH = "saved_models/discs/disc_synth_200.pth.tar"
 
 # directories for training and validation zebras and horses
 H_TRAIN_DIR = "horse2zebra/horse2zebra/train/horses"
@@ -27,8 +27,8 @@ H_VAL_IMG_PATH = "/home/roman/Desktop/LUXEMBOURG PROJECT/speedplusv2/synthetic/i
 Z_VAL_IMG_PATH = "horse2zebra/horse2zebra/val/zebras/n02391049_180.jpg"
 
 # directories SPEED+ horses = synthetic, zebras = lightbox
-SYNTH_DIR_SPEED = "/home/roman/Desktop/LUXEMBOURG PROJECT/speedplusv2/synthetic/images" 
-SL_DIR_SPEED = "/home/roman/Desktop/LUXEMBOURG PROJECT/speedplusv2/sunlamp/images"
+SYNTH_DIR_SPEED = "/home/roman/spacecraft-pose-estimation-trajectories/data/images" 
+SL_DIR_SPEED = "/home/roman/spacecraft-pose-estimation-trajectories/data_real/lux_sat_data_real_v1_nobck"
 LB_DIR_SPEED = "/home/roman/Desktop/LUXEMBOURG PROJECT/speedplusv2/lightbox/images"
 
 
@@ -40,7 +40,7 @@ Z_INFERENCE_DIR = "inference_images/zebras"
 
 transforms = A.Compose(
     [
-        A.Resize(width=256, height=256),
+         A.Resize(height=360, width=640),
         A.HorizontalFlip(p=0.5),
         A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5], max_pixel_value=255),
         ToTensorV2(),

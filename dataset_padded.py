@@ -14,8 +14,8 @@ class HorseZebraDataset(Dataset):
         self.transform = transform
         self.pad_color = pad_color  # RGB tuple for padding color
 
-        self.zebra_images = os.listdir(root_zebra)[:2500]
-        self.horse_images = os.listdir(root_horse)[:2500]
+        self.zebra_images = os.listdir(root_zebra)[:2000]
+        self.horse_images = os.listdir(root_horse)[:2000]
         self.length_dataset = max(len(self.zebra_images), len(self.horse_images))
         self.zebra_len = len(self.zebra_images)
         self.horse_len = len(self.horse_images)
